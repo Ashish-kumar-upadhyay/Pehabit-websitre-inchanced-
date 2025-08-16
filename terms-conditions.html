@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - PEHABIT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Top Header */
+        .top-header {
+            background: #ff6b35;
+            color: white;
+            padding: 1px 0;
+            font-size: 8px;
+        }
+
+        .top-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .business-hours, .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* Responsive Top Header */
+        @media (max-width: 768px) {
+            .top-header .container {
+                flex-direction: column;
+                gap: 1px;
+                text-align: center;
+            }
+            
+            .business-hours, .contact-info {
+                font-size: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-header {
+                padding: 0.5px 0;
+                font-size: 6px;
+            }
+            
+            .business-hours, .contact-info {
+                font-size: 5px;
+                gap: 2px;
+            }
+        }
+
+        /* Terms & Conditions Specific Styles */
+        .terms-hero {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terms-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .terms-hero-content {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        .terms-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .terms-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .terms-content {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .terms-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terms-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+        }
+
+        .terms-section h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .terms-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            border-radius: 2px;
+        }
+
+        .terms-section h3 {
+            color: #ff6b35;
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+        }
+
+        .terms-section p {
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .terms-section ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .terms-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* 3D Animations */
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(20px) rotate(-1deg); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .terms-section:nth-child(1) { animation-delay: 0.1s; }
+        .terms-section:nth-child(2) { animation-delay: 0.2s; }
+        .terms-section:nth-child(3) { animation-delay: 0.3s; }
+        .terms-section:nth-child(4) { animation-delay: 0.4s; }
+        .terms-section:nth-child(5) { animation-delay: 0.5s; }
+        .terms-section:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Footer Styles */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #ff6b35;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .footer-logo .logo-text h3 {
+            color: white;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .footer-logo .logo-text p {
+            color: white;
+            font-size: 10px;
+            margin: 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-item i {
+            color: #ff6b35;
+            width: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #999;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .terms-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .terms-section {
+                padding: 25px;
+                margin-bottom: 20px;
+            }
+            
+            .terms-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" style="height:50px; width:auto;">
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Our Services</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Terms Hero Section -->
+    <section class="terms-hero">
+        <div class="container">
+            <div class="terms-hero-content">
+                <h1><i class="fas fa-file-contract"></i> Terms & Conditions</h1>
+                <p>Please read these terms carefully before using our services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="terms-content">
+        <div class="container">
+            <div class="terms-section">
+                <h2>Terms and Conditions</h2>
+                <p>Welcome to PeHabit Private Limited. These Terms and Conditions govern your use of our website, mobile application, and services. By accessing or using our services, you agree to be bound by these terms.</p>
+                
+                <div class="highlight-box">
+                    <h3><i class="fas fa-calendar-alt"></i> Last Updated: 25th May, 2022</h3>
+                    <p>These terms constitute a legally binding agreement between you and PeHabit Private Limited regarding your use of our services.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2>Acceptance of Terms</h2>
+                <h3><i class="fas fa-check-circle"></i> Agreement to Terms</h3>
+                <p>By accessing or using our services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services.</p>
+                
+                <h3><i class="fas fa-user-plus"></i> Eligibility</h3>
+                <ul>
+                    <li>You must be at least 18 years old to use our services</li>
+                    <li>You must have the legal capacity to enter into binding agreements</li>
+                    <li>You must provide accurate and complete information when registering</li>
+                    <li>You are responsible for maintaining the security of your account</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>Services Description</h2>
+                <h3><i class="fas fa-cogs"></i> What We Provide</h3>
+                <p>PeHabit provides digital payment and settlement services, including but not limited to:</p>
+                <ul>
+                    <li>Mobile and DTH recharge services</li>
+                    <li>Bill payment services</li>
+                    <li>Money transfer services</li>
+                    <li>Digital wallet services</li>
+                    <li>Payment gateway services</li>
+                </ul>
+
+                <h3><i class="fas fa-exclamation-triangle"></i> Service Availability</h3>
+                <p>We strive to provide uninterrupted service, but we do not guarantee that our services will be available at all times. We may suspend or discontinue services for maintenance, updates, or other reasons.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>User Responsibilities</h2>
+                <h3><i class="fas fa-user-shield"></i> Account Security</h3>
+                <ul>
+                    <li>You are responsible for maintaining the confidentiality of your account credentials</li>
+                    <li>You must notify us immediately of any unauthorized use of your account</li>
+                    <li>You are responsible for all activities that occur under your account</li>
+                    <li>You must not share your account credentials with others</li>
+                </ul>
+
+                <h3><i class="fas fa-handshake"></i> Acceptable Use</h3>
+                <p>You agree to use our services only for lawful purposes and in accordance with these terms. You must not:</p>
+                <ul>
+                    <li>Use our services for any illegal or unauthorized purpose</li>
+                    <li>Attempt to gain unauthorized access to our systems</li>
+                    <li>Interfere with or disrupt our services</li>
+                    <li>Use our services to transmit harmful or malicious content</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>Payment Terms</h2>
+                <h3><i class="fas fa-credit-card"></i> Payment Processing</h3>
+                <p>All payments are processed securely through our payment gateway. By making a payment, you authorize us to charge your payment method for the specified amount.</p>
+
+                <div class="highlight-box">
+                    <h3><i class="fas fa-shield-alt"></i> Security Measures</h3>
+                    <p>We implement industry-standard security measures to protect your payment information. All transactions are encrypted and processed securely.</p>
+                </div>
+
+                <h3><i class="fas fa-receipt"></i> Transaction Records</h3>
+                <p>We maintain records of all transactions for your reference. You can access your transaction history through your account dashboard.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>Privacy and Data Protection</h2>
+                <h3><i class="fas fa-lock"></i> Data Collection</h3>
+                <p>We collect and process your personal data in accordance with our Privacy Policy. By using our services, you consent to our data collection and processing practices.</p>
+
+                <h3><i class="fas fa-eye"></i> Data Usage</h3>
+                <p>We use your data to provide our services, improve user experience, and comply with legal obligations. We do not sell your personal information to third parties.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>Limitation of Liability</h2>
+                <h3><i class="fas fa-balance-scale"></i> Disclaimer</h3>
+                <p>To the maximum extent permitted by law, PeHabit shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services.</p>
+
+                <h3><i class="fas fa-gavel"></i> Maximum Liability</h3>
+                <p>Our total liability to you for any claims arising from your use of our services shall not exceed the amount you paid to us in the 12 months preceding the claim.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>Termination</h2>
+                <h3><i class="fas fa-times-circle"></i> Account Termination</h3>
+                <p>We may terminate or suspend your account at any time for violation of these terms or for any other reason at our sole discretion.</p>
+
+                <h3><i class="fas fa-sign-out-alt"></i> Effect of Termination</h3>
+                <p>Upon termination, your right to use our services will cease immediately. Any provisions of these terms that by their nature should survive termination shall remain in effect.</p>
+            </div>
+
+            <div class="contact-info">
+                <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+                <p>If you have any questions about these Terms and Conditions, please contact us:</p>
+                <p><strong>Email:</strong> <a href="mailto:support@PeHabit.in">support@PeHabit.in</a></p>
+                <p><strong>Address:</strong> PeHabit Private Limited, Rc 115 Khora, Azad Vihar Khora, Khoda Ghaziabad, Ghaziabad UP 201309</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Logo" style="height:50px; width:auto;">
+                    </div>
+                    <p>We are locally based and understand the needs of our customers, their operating environments, and the unique features of each institution.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Address</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>9667002287</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@pehabit.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>B-2/11 Mohan Co-operative Industrial Area Behind Badarpur Border Metro Station 110044</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html">Terms & Condition</a></li>
+                        <li><a href="refund-policy.html">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; Copyright 2022-24 PeHabit | All Right Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
